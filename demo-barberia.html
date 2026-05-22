@@ -904,6 +904,62 @@ body::after{
   .carousel3d-wrap{height:420px;}
   .c3d-phone{width:155px;}
 }
+
+/* ── ESTADÍSTICAS PREVIEW ── */
+.stats-preview{ max-width:860px; margin:0 auto; }
+.stats-kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:14px; margin-bottom:16px;
+}
+.stats-kpi{
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px 22px;
+}
+.stats-kpi-label{
+  font-size:10px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--text2); margin-bottom:10px;
+}
+.stats-kpi-value{
+  font-size:30px; font-weight:800; line-height:1; margin-bottom:6px;
+}
+.stats-kpi-badge{
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:11px; font-weight:700;
+  padding:3px 8px; border-radius:20px;
+}
+.stats-kpi-badge.up{ background:rgba(0,230,118,0.1); color:var(--green); }
+.stats-kpi-badge.down{ background:rgba(255,61,90,0.1); color:var(--red); }
+.stats-kpi-badge.mid{ background:rgba(0,229,255,0.1); color:var(--cyan); }
+
+.stats-chart-wrap{
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px 24px; margin-bottom:20px;
+}
+.stats-chart-title{
+  font-size:11px; font-weight:700; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--text2); margin-bottom:18px;
+}
+.stats-bars{
+  display:flex; align-items:flex-end; gap:6px; height:90px;
+}
+.stats-bar-col{
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; gap:6px;
+}
+.stats-bar{
+  width:100%; border-radius:4px 4px 0 0;
+  background:var(--teal); opacity:0.7;
+  height:0; transition:height 1s cubic-bezier(.4,0,.2,1);
+}
+.stats-bar.active{ opacity:1; box-shadow:0 0 10px rgba(0,196,188,0.3); }
+.stats-bar-day{
+  font-size:9px; font-weight:700; color:var(--text3);
+  letter-spacing:0.06em; text-transform:uppercase;
+}
+.stats-cta-row{
+  display:flex; justify-content:center; padding-top:8px;
+}
 </style>
 </head>
 <body>
@@ -934,6 +990,7 @@ body::after{
     <a href="#config">Configuración</a>
     <a href="#admin">Admin</a>
     <a href="#features">Funciones</a>
+    <a href="#estadisticas">Estadísticas</a>
     <a href="#precios">Precios</a>
   </div>
   <a class="nav-cta" href="#precios">Empezá hoy</a>
@@ -1587,6 +1644,61 @@ body::after{
 
 <div class="section-divider"></div>
 
+<!-- ESTADÍSTICAS -->
+<section class="section" id="estadisticas">
+  <div class="sec-eyebrow">Estadísticas</div>
+  <h2 class="sec-title">Sabé exactamente<br>cómo rinde tu negocio</h2>
+  <p class="sec-sub">Turnos, ingresos, ocupación y tendencias — todo en un panel claro y en tiempo real.</p>
+
+  <div class="stats-preview fade-up">
+    <!-- KPIs -->
+    <div class="stats-kpi-grid">
+      <div class="stats-kpi">
+        <div class="stats-kpi-label">Turnos del mes</div>
+        <div class="stats-kpi-value" style="color:var(--teal)">142</div>
+        <span class="stats-kpi-badge up">↑ +12% vs mes anterior</span>
+      </div>
+      <div class="stats-kpi">
+        <div class="stats-kpi-label">Ingreso estimado</div>
+        <div class="stats-kpi-value" style="color:var(--cyan)">$49.700</div>
+        <span class="stats-kpi-badge up">↑ +8% vs mes anterior</span>
+      </div>
+      <div class="stats-kpi">
+        <div class="stats-kpi-label">Tasa de ocupación</div>
+        <div class="stats-kpi-value" style="color:var(--green)">78%</div>
+        <span class="stats-kpi-badge mid">Pico: viernes 18hs</span>
+      </div>
+      <div class="stats-kpi">
+        <div class="stats-kpi-label">Cancelados</div>
+        <div class="stats-kpi-value" style="color:var(--text2)">11</div>
+        <span class="stats-kpi-badge down">↓ 7.7% del total</span>
+      </div>
+    </div>
+
+    <!-- Mini chart -->
+    <div class="stats-chart-wrap">
+      <div class="stats-chart-title">Turnos por día — últimos 7 días</div>
+      <div class="stats-bars" id="stats-bars">
+        <div class="stats-bar-col"><div class="stats-bar" data-h="55"></div><div class="stats-bar-day">Lun</div></div>
+        <div class="stats-bar-col"><div class="stats-bar" data-h="72"></div><div class="stats-bar-day">Mar</div></div>
+        <div class="stats-bar-col"><div class="stats-bar" data-h="68"></div><div class="stats-bar-day">Mié</div></div>
+        <div class="stats-bar-col"><div class="stats-bar" data-h="85"></div><div class="stats-bar-day">Jue</div></div>
+        <div class="stats-bar-col"><div class="stats-bar active" data-h="100"></div><div class="stats-bar-day">Vie</div></div>
+        <div class="stats-bar-col"><div class="stats-bar active" data-h="95"></div><div class="stats-bar-day">Sáb</div></div>
+        <div class="stats-bar-col"><div class="stats-bar" data-h="40"></div><div class="stats-bar-day">Dom</div></div>
+      </div>
+    </div>
+
+    <div class="stats-cta-row">
+      <a href="estadisticas-demo.html" target="_blank" class="btn-primary" style="text-decoration:none">
+        Ver dashboard completo →
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- PRECIOS -->
 <section class="section" id="precios">
   <div class="sec-eyebrow">Planes</div>
@@ -1940,6 +2052,21 @@ document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
       if(nameEl) nameEl.textContent=cfg.shop_name;
     }
   }catch(e){}
+})();
+
+// ─── STATS BARS ANIMATION ───
+(function(){
+  const wrap = document.getElementById('stats-bars');
+  if(!wrap) return;
+  const bars = wrap.querySelectorAll('.stats-bar');
+  const obs = new IntersectionObserver(entries=>{
+    if(!entries[0].isIntersecting) return;
+    bars.forEach(b=>{
+      b.style.height = b.dataset.h + '%';
+    });
+    obs.disconnect();
+  },{threshold:0.3});
+  obs.observe(wrap);
 })();
 </script>
 </body>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estadísticas · BarberAgenda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:   #0F0F0F;
+      --bg2:  #181818;
+      --bg3:  #222222;
+      --gold: #FF2D55;
+      --cyan: #00E5FF;
+      --green:#00E676;
+      --red:  #FF3D5A;
+      --purple:#B060FF;
+      --text: #F0EDE6;
+      --dim:  rgba(240,237,230,0.4);
+      --dimmer: rgba(240,237,230,0.18);
+      --border: rgba(255,45,85,0.15);
+      --border2: rgba(255,45,85,0.3);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-x: hidden;
+    }
+
+    /* Dot grid — estilo BarberAgenda */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,45,85,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Ambient glow radial */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255,45,85,0.07) 0%, transparent 65%),
+        linear-gradient(160deg, #1C0608 0%, #0F0F0F 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Header ── */
+    .header {
+      padding: 30px 0 22px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-avatar {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: #1A1A2E;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .brand-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-avatar-placeholder {
+      font-size: 20px;
+      opacity: 0.5;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .brand-tagline {
+      font-size: 10px;
+      color: var(--dimmer);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.2);
+    }
+
+    .live-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .sim-note {
+      font-size: 9px;
+      color: var(--dimmer);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 3px;
+      padding: 3px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .pill {
+      padding: 5px 14px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--dim);
+      transition: all 0.15s;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .pill:hover { color: var(--text); }
+
+    .pill.active {
+      background: var(--bg3);
+      color: var(--gold);
+      box-shadow: inset 0 0 0 1px rgba(201,168,76,0.2);
+    }
+
+    .vsep {
+      width: 1px; height: 22px;
+      background: var(--border);
+      align-self: center;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 28px 30px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px; top: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dimmer);
+      margin-bottom: 2px;
+    }
+
+    .hero-num {
+      font-size: 88px;
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: var(--gold);
+      text-shadow: 0 0 50px rgba(255,45,85,0.35), 0 0 100px rgba(255,45,85,0.15);
+      display: inline-block;
+      margin-bottom: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hero-unit {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(201,168,76,0.5);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-period { font-size: 12px; color: var(--dim); }
+
+    .trend-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .trend-badge.up   { background: rgba(0,230,118,0.1); color: var(--green); }
+    .trend-badge.down { background: rgba(255,61,90,0.1);  color: var(--red); }
+
+    /* ── KPI grid ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .kpi-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border2);
+    }
+
+    .kpi-top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: 14px 14px 0 0;
+    }
+
+    .kpi-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dimmer);
+      margin-bottom: 8px;
+    }
+
+    .kpi-val {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 7px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kpi-sub {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .kpi-sub-text { font-size: 10px; color: var(--dimmer); }
+
+    .mini-trend {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .mini-trend.up   { background: rgba(0,230,118,0.1);  color: var(--green); }
+    .mini-trend.down { background: rgba(255,61,90,0.1);   color: var(--red); }
+
+    /* ── Quick row ── */
+    .quick-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .quick-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      transition: border-color 0.2s;
+    }
+
+    .quick-card:hover { border-color: var(--border2); }
+
+    .quick-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dimmer);
+      margin-bottom: 4px;
+    }
+
+    .quick-val { font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .quick-sub { font-size: 9px; color: var(--dimmer); margin-top: 3px; }
+
+    /* ── Section ── */
+    .section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 18px;
+    }
+
+    /* Slanted label — street style */
+    .sec-label {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 12px 3px 8px;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 0 100%);
+      color: #07080F;
+    }
+
+    /* ── Trend chart ── */
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 110px;
+      padding-bottom: 18px;
+    }
+
+    .bar-col {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .bar-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .bar {
+      width: 100%;
+      border-radius: 3px 3px 0 0;
+      min-height: 4px;
+      transition: height 0.65s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+
+    .bar-col:hover .bar { filter: brightness(1.3); }
+
+    .bar-tip {
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+      z-index: 20;
+    }
+
+    .bar-col:hover .bar-tip { opacity: 1; }
+
+    .bar-lbl {
+      position: absolute;
+      bottom: 0;
+      font-size: 8px;
+      font-weight: 600;
+      color: var(--dimmer);
+    }
+
+    .bar-lbl.now { color: var(--gold); font-weight: 700; }
+
+    /* ── Progress ── */
+    .prog-row { margin-bottom: 11px; }
+    .prog-row:last-child { margin-bottom: 0; }
+
+    .prog-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .prog-name { font-size: 12px; font-weight: 600; }
+    .prog-stat { font-size: 11px; color: var(--dim); }
+
+    .prog-track {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .prog-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+
+    /* ── Day chart ── */
+    .day-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 100px;
+      padding-bottom: 20px;
+    }
+
+    .day-col {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .day-bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      min-height: 4px;
+      transition: height 0.7s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+
+    .day-col:hover .day-bar { filter: brightness(1.3); }
+    .day-col.best .day-bar { box-shadow: 0 0 14px rgba(201,168,76,0.35); }
+
+    .day-lbl {
+      position: absolute;
+      bottom: 0;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--dimmer);
+    }
+
+    .day-col.best .day-lbl { color: var(--gold); font-weight: 700; }
+
+    /* ── Barbers ── */
+    .barber-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.15s;
+      cursor: pointer;
+    }
+
+    .barber-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .barber-row:first-child { padding-top: 0; }
+    .barber-row:hover { padding-left: 4px; }
+
+    .b-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%; flex-shrink: 0;
+    }
+
+    .b-name { font-size: 13px; font-weight: 600; }
+    .b-ingreso { font-size: 10px; color: var(--dim); margin-top: 1px; }
+    .b-count { font-size: 22px; font-weight: 700; line-height: 1; }
+
+    /* ── Clients ── */
+    .client-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.15s;
+      cursor: pointer;
+    }
+
+    .client-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .client-row:first-child { padding-top: 0; }
+    .client-row:hover { padding-left: 4px; }
+
+    .c-avatar {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .c-name { font-size: 13px; font-weight: 600; }
+    .c-detail { font-size: 10px; color: var(--dim); margin-top: 1px; }
+    .c-count { font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+    /* ── Two col ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Watermark ── */
+    .wm {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 10px;
+      color: var(--dimmer);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fu  { animation: fadeUp 0.45s ease both; }
+    .fu1 { animation-delay: 0.04s; }
+    .fu2 { animation-delay: 0.09s; }
+    .fu3 { animation-delay: 0.14s; }
+    .fu4 { animation-delay: 0.19s; }
+    .fu5 { animation-delay: 0.24s; }
+    .fu6 { animation-delay: 0.29s; }
+
+    @media (max-width: 480px) {
+      .hero-num { font-size: 66px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .kpi-val { font-size: 24px; }
+      .quick-row { grid-template-columns: 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header fu">
+    <div class="brand-wrap">
+      <div class="brand-avatar">
+        <img src="shop-profile.png" alt="perfil" style="display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <span class="brand-avatar-placeholder" style="display:none">✂</span>
+      </div>
+      <div>
+        <div class="brand-name">Tu Barbería</div>
+        <div class="brand-tagline">Panel de estadísticas</div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div class="live-badge"><div class="live-dot"></div>Simulación activa</div>
+      <div class="sim-note">Demo · 3 meses de actividad</div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters fu fu1">
+    <div class="pill-group" id="periodGroup">
+      <button class="pill" data-period="7d">7 días</button>
+      <button class="pill active" data-period="30d">30 días</button>
+      <button class="pill" data-period="90d">90 días</button>
+    </div>
+    <div class="vsep"></div>
+    <div class="pill-group" id="barberGroup">
+      <button class="pill active" data-barber="all">Todos</button>
+      <button class="pill" data-barber="barbero 1">Barbero 1</button>
+      <button class="pill" data-barber="barbero 2">Barbero 2</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero fu fu2">
+    <div class="hero-eyebrow">Turnos agendados</div>
+    <div>
+      <span class="hero-num" id="heroCount">0</span><span class="hero-unit">turnos</span>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-period" id="heroPeriod">–</span>
+      <span class="trend-badge up" id="heroTrend">–</span>
+    </div>
+  </div>
+
+  <!-- KPI grid -->
+  <div class="kpi-grid fu fu2">
+    <div class="kpi-card">
+      <div class="kpi-top-bar" style="background:var(--cyan)"></div>
+      <div class="kpi-label">Ingreso est.</div>
+      <div class="kpi-val" style="color:var(--cyan)" id="kpiIngreso">0</div>
+      <div class="kpi-sub">
+        <span class="kpi-sub-text">confirmados</span>
+        <span class="mini-trend up" id="kpiIngresoTrend">–</span>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-top-bar" style="background:var(--green)"></div>
+      <div class="kpi-label">Ocupación</div>
+      <div class="kpi-val" style="color:var(--green)" id="kpiOcup">0</div>
+      <div class="kpi-sub">
+        <span class="kpi-sub-text" id="kpiSlots">–</span>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-top-bar" style="background:var(--red)"></div>
+      <div class="kpi-label">Cancelados</div>
+      <div class="kpi-val" style="color:var(--red)" id="kpiCanc">0</div>
+      <div class="kpi-sub">
+        <span class="kpi-sub-text" id="kpiCancPct">–</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick stats -->
+  <div class="quick-row fu fu3">
+    <div class="quick-card">
+      <div class="quick-label">Hora pico</div>
+      <div class="quick-val" id="qHora">–</div>
+      <div class="quick-sub">más solicitada</div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-label">Completados</div>
+      <div class="quick-val" id="qComp">0</div>
+      <div class="quick-sub" id="qCompPct">–</div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-label">Sin cerrar</div>
+      <div class="quick-val" id="qPend">0</div>
+      <div class="quick-sub" id="qPendSub">–</div>
+    </div>
+  </div>
+
+  <!-- Trend chart -->
+  <div class="section fu fu3">
+    <div class="sec-head">
+      <span class="sec-label" style="background:var(--gold)">Tendencia — 8 semanas</span>
+    </div>
+    <div class="chart-bars" id="trendChart"></div>
+  </div>
+
+  <!-- Services + Barbers -->
+  <div class="two-col fu fu4">
+    <div class="section">
+      <div class="sec-head">
+        <span class="sec-label" style="background:var(--gold)">Por servicio</span>
+      </div>
+      <div id="serviciosChart"></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head">
+        <span class="sec-label" style="background:var(--cyan);color:#07080F">Por barbero</span>
+      </div>
+      <div id="barberosChart"></div>
+    </div>
+  </div>
+
+  <!-- Day distribution -->
+  <div class="section fu fu4">
+    <div class="sec-head">
+      <span class="sec-label" style="background:var(--gold)">Distribución por día</span>
+    </div>
+    <div class="day-chart" id="dayChart"></div>
+  </div>
+
+  <!-- Top clients -->
+  <div class="section fu fu5">
+    <div class="sec-head">
+      <span class="sec-label" style="background:var(--gold)">Top clientes</span>
+    </div>
+    <div id="clientList"></div>
+  </div>
+
+  <div class="wm fu fu6">BarberAgenda · Así se verían tus estadísticas</div>
+
+</div>
+
+<script>
+const D = {
+  '7d': {
+    turnos:52, trend_t:18,
+    ingreso:26000, trend_i:22,
+    ocup:74, slots_used:52, slots_total:70,
+    canc:2, canc_pct:4,
+    hora:'10:00', comp:38, comp_pct:73, pend:1,
+    plabel:'últimos 7 días',
+    weekly:[
+      {w:'S-7',n:28},{w:'S-6',n:31},{w:'S-5',n:27},{w:'S-4',n:34},
+      {w:'S-3',n:38},{w:'S-2',n:41},{w:'S-1',n:44},{w:'Esta',n:52,cur:true}
+    ],
+    svcs:[
+      {name:'Corte',n:26,pct:50,color:'#C9A84C'},
+      {name:'Corte + Barba',n:16,pct:31,color:'#00E5FF'},
+      {name:'Mechas',n:6,pct:12,color:'#B060FF'},
+      {name:'Decoloración',n:4,pct:7,color:'rgba(240,237,230,0.35)'},
+    ],
+    barbers:[
+      {name:'Barbero 1',n:32,ingreso:16000,color:'#FF2D55'},
+      {name:'Barbero 2',n:20,ingreso:10000,color:'#00E5FF'},
+    ],
+    days:[
+      {d:'Dom',n:0},{d:'Lun',n:0},{d:'Mar',n:12},{d:'Mié',n:17},
+      {d:'Jue',n:16},{d:'Vie',n:23,best:true},{d:'Sáb',n:18}
+    ],
+    clients:[
+      {name:'Juan García',ini:'JG',n:4,svc:'Corte'},
+      {name:'Mateo López',ini:'ML',n:3,svc:'Corte + Barba'},
+      {name:'Santiago Pérez',ini:'SP',n:3,svc:'Mechas'},
+      {name:'Agustín Díaz',ini:'AD',n:2,svc:'Corte'},
+      {name:'Nicolás Torres',ini:'NT',n:2,svc:'Corte + Barba'},
+    ]
+  },
+  '30d': {
+    turnos:148, trend_t:23,
+    ingreso:74200, trend_i:31,
+    ocup:78, slots_used:148, slots_total:189,
+    canc:9, canc_pct:6,
+    hora:'10:00', comp:112, comp_pct:76, pend:0,
+    plabel:'últimos 30 días',
+    weekly:[
+      {w:'S-7',n:28},{w:'S-6',n:31},{w:'S-5',n:27},{w:'S-4',n:34},
+      {w:'S-3',n:38},{w:'S-2',n:41},{w:'S-1',n:44},{w:'Esta',n:52,cur:true}
+    ],
+    svcs:[
+      {name:'Corte',n:72,pct:49,color:'#C9A84C'},
+      {name:'Corte + Barba',n:48,pct:32,color:'#00E5FF'},
+      {name:'Mechas',n:18,pct:12,color:'#B060FF'},
+      {name:'Decoloración',n:10,pct:7,color:'rgba(240,237,230,0.35)'},
+    ],
+    barbers:[
+      {name:'Barbero 1',n:89,ingreso:44500,color:'#FF2D55'},
+      {name:'Barbero 2',n:59,ingreso:29700,color:'#00E5FF'},
+    ],
+    days:[
+      {d:'Dom',n:0},{d:'Lun',n:0},{d:'Mar',n:18},{d:'Mié',n:24},
+      {d:'Jue',n:29},{d:'Vie',n:42,best:true},{d:'Sáb',n:35}
+    ],
+    clients:[
+      {name:'Juan García',ini:'JG',n:11,svc:'Corte'},
+      {name:'Mateo López',ini:'ML',n:9,svc:'Corte + Barba'},
+      {name:'Santiago Pérez',ini:'SP',n:7,svc:'Mechas'},
+      {name:'Agustín Díaz',ini:'AD',n:6,svc:'Corte'},
+      {name:'Nicolás Torres',ini:'NT',n:5,svc:'Corte + Barba'},
+    ]
+  },
+  '90d': {
+    turnos:441, trend_t:42,
+    ingreso:220500, trend_i:38,
+    ocup:82, slots_used:441, slots_total:537,
+    canc:31, canc_pct:7,
+    hora:'11:00', comp:378, comp_pct:86, pend:0,
+    plabel:'últimos 90 días',
+    weekly:[
+      {w:'S-7',n:32},{w:'S-6',n:35},{w:'S-5',n:39},{w:'S-4',n:42},
+      {w:'S-3',n:44},{w:'S-2',n:48},{w:'S-1',n:50},{w:'Esta',n:52,cur:true}
+    ],
+    svcs:[
+      {name:'Corte',n:216,pct:49,color:'#C9A84C'},
+      {name:'Corte + Barba',n:141,pct:32,color:'#00E5FF'},
+      {name:'Mechas',n:53,pct:12,color:'#B060FF'},
+      {name:'Decoloración',n:31,pct:7,color:'rgba(240,237,230,0.35)'},
+    ],
+    barbers:[
+      {name:'Barbero 1',n:265,ingreso:132500,color:'#FF2D55'},
+      {name:'Barbero 2',n:176,ingreso:88000,color:'#00E5FF'},
+    ],
+    days:[
+      {d:'Dom',n:0},{d:'Lun',n:0},{d:'Mar',n:54},{d:'Mié',n:72},
+      {d:'Jue',n:87},{d:'Vie',n:126,best:true},{d:'Sáb',n:102}
+    ],
+    clients:[
+      {name:'Juan García',ini:'JG',n:32,svc:'Corte'},
+      {name:'Mateo López',ini:'ML',n:27,svc:'Corte + Barba'},
+      {name:'Santiago Pérez',ini:'SP',n:21,svc:'Mechas'},
+      {name:'Agustín Díaz',ini:'AD',n:18,svc:'Corte'},
+      {name:'Nicolás Torres',ini:'NT',n:15,svc:'Corte + Barba'},
+    ]
+  }
+};
+
+let period = '30d';
+let barber = 'all';
+
+function fmtNum(n) {
+  return n.toLocaleString('es-AR');
+}
+
+function countUp(el, to, pre='', suf='', dur=650) {
+  const from = parseFloat(el.dataset.raw || '0') || 0;
+  el.dataset.raw = to;
+  const start = performance.now();
+  function tick(t) {
+    const p = Math.min((t - start) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    const v = Math.round(from + (to - from) * e);
+    el.textContent = pre + fmtNum(v) + suf;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function filterD(d) {
+  if (barber === 'all') return d;
+  const b = d.barbers.find(b => b.name.toLowerCase() === barber);
+  if (!b) return d;
+  const r = b.n / d.turnos;
+  return {
+    ...d,
+    turnos: b.n, ingreso: b.ingreso,
+    ocup: Math.round(d.ocup * (0.8 + r * 0.4)),
+    canc: Math.round(d.canc * r),
+    comp: Math.round(d.comp * r),
+    slots_used: b.n, slots_total: Math.round(d.slots_total * r + 8),
+    weekly: d.weekly.map(w => ({...w, n: Math.round(w.n * r)})),
+    svcs: d.svcs.map(s => ({...s, n: Math.round(s.n * r)})),
+    days: d.days.map(dy => ({...dy, n: Math.round(dy.n * r)})),
+    barbers: [b],
+  };
+}
+
+function render() {
+  const d = filterD(D[period]);
+
+  // Hero
+  countUp(document.getElementById('heroCount'), d.turnos, '', '', 700);
+  document.getElementById('heroPeriod').textContent = d.plabel;
+  const tEl = document.getElementById('heroTrend');
+  tEl.textContent = `↑ ${d.trend_t}% vs período anterior`;
+  tEl.className = 'trend-badge ' + (d.trend_t >= 0 ? 'up' : 'down');
+
+  // KPIs
+  countUp(document.getElementById('kpiIngreso'), d.ingreso, '$', '', 700);
+  document.getElementById('kpiIngresoTrend').textContent = `↑ ${d.trend_i}%`;
+  countUp(document.getElementById('kpiOcup'), d.ocup, '', '%', 600);
+  document.getElementById('kpiSlots').textContent = `${d.slots_used} de ${d.slots_total} slots`;
+  countUp(document.getElementById('kpiCanc'), d.canc, '', '', 500);
+  document.getElementById('kpiCancPct').textContent = `${d.canc_pct}% del total`;
+
+  // Quick
+  document.getElementById('qHora').textContent = d.hora;
+  countUp(document.getElementById('qComp'), d.comp, '', '', 550);
+  document.getElementById('qCompPct').textContent = `${d.comp_pct}% del total`;
+  const pEl = document.getElementById('qPend');
+  countUp(pEl, d.pend, '', '', 400);
+  pEl.style.color = d.pend > 0 ? 'var(--red)' : 'var(--text)';
+  document.getElementById('qPendSub').textContent = d.pend > 0 ? 'pendiente/s' : 'al día ✓';
+
+  renderTrend(d.weekly);
+  renderSvcs(d.svcs);
+  renderBarbers(d.barbers, d.turnos);
+  renderDays(d.days);
+  renderClients(d.clients);
+}
+
+function renderTrend(weekly) {
+  const el = document.getElementById('trendChart');
+  const maxN = Math.max(...weekly.map(w => w.n), 1);
+  const maxH = 86;
+  el.innerHTML = weekly.map(w => {
+    const h = Math.max(4, Math.round((w.n / maxN) * maxH));
+    const bg = w.cur ? 'var(--gold)' : 'rgba(255,45,85,0.22)';
+    const glow = w.cur ? 'box-shadow:0 0 14px rgba(255,45,85,0.4);' : '';
+    return `
+      <div class="bar-col${w.cur ? ' active' : ''}">
+        <div class="bar-wrap">
+          <div class="bar-tip">${w.n} turnos</div>
+          <div class="bar" style="height:0;background:${bg};${glow}" data-h="${h}px"></div>
+        </div>
+        <span class="bar-lbl${w.cur ? ' now' : ''}">${w.w}</span>
+      </div>`;
+  }).join('');
+  setTimeout(() => {
+    el.querySelectorAll('.bar').forEach(b => { b.style.height = b.dataset.h; });
+  }, 40);
+}
+
+function renderSvcs(svcs) {
+  const el = document.getElementById('serviciosChart');
+  el.innerHTML = svcs.map(s => `
+    <div class="prog-row">
+      <div class="prog-head">
+        <span class="prog-name" style="color:${s.color}">${s.name}</span>
+        <span class="prog-stat">${s.n} · ${s.pct}%</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" style="width:0;background:${s.color}" data-w="${s.pct}%"></div>
+      </div>
+    </div>`).join('');
+  setTimeout(() => {
+    el.querySelectorAll('.prog-fill').forEach(f => { f.style.width = f.dataset.w; });
+  }, 80);
+}
+
+function renderBarbers(barbers, total) {
+  const el = document.getElementById('barberosChart');
+  const maxN = Math.max(...barbers.map(b => b.n), 1);
+  el.innerHTML = barbers.map(b => {
+    const pct = Math.round((b.n / maxN) * 100);
+    return `
+      <div class="barber-row">
+        <div class="b-dot" style="background:${b.color};box-shadow:0 0 7px ${b.color}55"></div>
+        <div style="flex:1;min-width:0">
+          <div class="b-name" style="color:${b.color}">${b.name}</div>
+          <div class="b-ingreso">$${fmtNum(b.ingreso)}</div>
+          <div class="prog-track" style="margin-top:5px">
+            <div class="prog-fill" style="width:0;background:${b.color}" data-w="${pct}%"></div>
+          </div>
+        </div>
+        <div class="b-count" style="color:${b.color}">${b.n}</div>
+      </div>`;
+  }).join('');
+  setTimeout(() => {
+    el.querySelectorAll('.prog-fill').forEach(f => { f.style.width = f.dataset.w; });
+  }, 80);
+}
+
+function renderDays(days) {
+  const el = document.getElementById('dayChart');
+  const maxN = Math.max(...days.map(d => d.n), 1);
+  const maxH = 74;
+  el.innerHTML = days.map(d => {
+    const empty = d.n === 0;
+    const h = empty ? 4 : Math.max(6, Math.round((d.n / maxN) * maxH));
+    const bg = d.best ? 'var(--gold)' : (empty ? 'rgba(255,255,255,0.04)' : 'rgba(255,45,85,0.35)');
+    return `
+      <div class="day-col${d.best ? ' best' : ''}">
+        <div class="day-bar" style="height:0;background:${bg}" data-h="${h}px"></div>
+        <span class="day-lbl">${d.d}</span>
+      </div>`;
+  }).join('');
+  setTimeout(() => {
+    el.querySelectorAll('.day-bar').forEach(b => { b.style.height = b.dataset.h; });
+  }, 80);
+}
+
+const C_COLORS = ['#FF2D55','#00E5FF','#B060FF','rgba(240,237,230,0.5)','rgba(240,237,230,0.35)'];
+const C_BG    = ['rgba(255,45,85,0.1)','rgba(0,229,255,0.08)','rgba(176,96,255,0.08)','rgba(255,255,255,0.04)','rgba(255,255,255,0.03)'];
+
+function renderClients(clients) {
+  const el = document.getElementById('clientList');
+  const maxN = Math.max(...clients.map(c => c.n), 1);
+  el.innerHTML = clients.map((c, i) => {
+    const color = C_COLORS[i] || C_COLORS[4];
+    const bg = C_BG[i] || C_BG[4];
+    const pct = Math.round((c.n / maxN) * 100);
+    return `
+      <div class="client-row">
+        <div class="c-avatar" style="background:${bg};border:1px solid ${color}33;color:${color}">${c.ini}</div>
+        <div style="flex:1;min-width:0">
+          <div class="c-name">${c.name}</div>
+          <div class="c-detail">${c.svc}</div>
+          <div class="prog-track" style="margin-top:4px">
+            <div class="prog-fill" style="width:${pct}%;background:${color}"></div>
+          </div>
+        </div>
+        <div class="c-count" style="color:${color}">${c.n}v</div>
+      </div>`;
+  }).join('');
+}
+
+// Events
+document.getElementById('periodGroup').addEventListener('click', e => {
+  const btn = e.target.closest('[data-period]');
+  if (!btn) return;
+  period = btn.dataset.period;
+  document.querySelectorAll('[data-period]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+});
+
+document.getElementById('barberGroup').addEventListener('click', e => {
+  const btn = e.target.closest('[data-barber]');
+  if (!btn) return;
+  barber = btn.dataset.barber;
+  document.querySelectorAll('[data-barber]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+});
+
+render();
+
+// Carga logo real de Supabase
+(async function loadShopLogo() {
+  try {
+    const res = await fetch(
+      'https://bphaisfhrrvtmojvbimq.supabase.co/rest/v1/shop_config?id=eq.1&select=logo_url,shop_name',
+      { headers: { 'apikey': 'sb_publishable_jr7eIqXgB1Fr7exYur0hJg_eJ872R8f' } }
+    );
+    const [cfg] = await res.json();
+    if (!cfg) return;
+    if (cfg.logo_url) {
+      const img = document.querySelector('.brand-avatar img');
+      if (img && !img.src.includes('shop-profile.png')) {
+        img.src = cfg.logo_url;
+        img.style.display = 'block';
+        const ph = document.querySelector('.brand-avatar-placeholder');
+        if (ph) ph.style.display = 'none';
+      }
+    }
+    if (cfg.shop_name) {
+      const nameEl = document.querySelector('.brand-name');
+      if (nameEl) nameEl.textContent = cfg.shop_name;
+    }
+  } catch(e) { /* fallback al placeholder */ }
+})();
+</script>
+</body>
+</html>
