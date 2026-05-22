@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>BarberAgenda â€” Tu barberÃ­a en modo profesional</title>
+<title>BarberAgenda — Tu barbería en modo profesional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -28,7 +28,7 @@ body::after{
   background:radial-gradient(ellipse at center,rgba(0,196,188,0.13) 0%,rgba(0,196,188,0.04) 40%,transparent 70%);
 }
 
-/* â”€â”€â”€ NAV â”€â”€â”€ */
+/* ─── NAV ─── */
 .nav{
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; gap:20px;
@@ -69,7 +69,7 @@ body::after{
 .nav-cta:hover{opacity:0.88;transform:scale(0.98);}
 @media(max-width:600px){.nav-links{display:none;}}
 
-/* â”€â”€â”€ HERO â”€â”€â”€ */
+/* ─── HERO ─── */
 .hero{
   min-height:100vh; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
@@ -171,7 +171,7 @@ body::after{
   font-size:10px; font-weight:800; letter-spacing:0.03em;
 }
 
-/* â”€â”€â”€ SECTION WRAPPER â”€â”€â”€ */
+/* ─── SECTION WRAPPER ─── */
 .section{
   position:relative; z-index:1;
   padding:96px clamp(16px,4vw,80px);
@@ -218,7 +218,7 @@ body::after{
 }
 .fade-up.visible{opacity:1;transform:translateY(0);}
 
-/* â”€â”€â”€ CONFIG STEPS â”€â”€â”€ */
+/* ─── CONFIG STEPS ─── */
 .steps-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
@@ -307,7 +307,7 @@ body::after{
   font-family:'Space Grotesk',sans-serif; width:52px;
 }
 
-/* â”€â”€â”€ ADMIN MOCKUP â”€â”€â”€ */
+/* ─── ADMIN MOCKUP ─── */
 .admin-shell{
   background:var(--bg2); border-radius:14px;
   border:1px solid rgba(0,196,188,0.12); overflow:hidden;
@@ -377,7 +377,7 @@ body::after{
 .appt-canc{background:rgba(255,61,90,0.08);color:var(--text3);border-left:2px solid rgba(255,61,90,0.3);text-decoration:line-through;}
 .appt-done{background:rgba(148,163,184,0.08);color:#64748B;border-left:2px solid #334155;}
 
-/* â”€â”€â”€ FEATURES â”€â”€â”€ */
+/* ─── FEATURES ─── */
 .features-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(275px,1fr));
@@ -419,7 +419,7 @@ body::after{
   font-size:12px; color:var(--text2); line-height:1.4;
   display:flex; gap:6px;
 }
-.feat-bullet::before{content:'Â·';color:var(--teal);font-size:16px;line-height:1;}
+.feat-bullet::before{content:'·';color:var(--teal);font-size:16px;line-height:1;}
 
 /* Avisos */
 .aviso-row{
@@ -483,7 +483,7 @@ body::after{
 }
 .feat-link:hover{opacity:0.8;}
 
-/* â”€â”€â”€ CLIENT FLOW â”€â”€â”€ */
+/* ─── CLIENT FLOW ─── */
 .flow-scroll{
   display:flex; gap:10px;
   overflow-x:auto; padding-bottom:12px;
@@ -553,7 +553,7 @@ body::after{
 .mgbtn-rep{background:rgba(0,229,255,0.08);color:var(--cyan);border:1px solid rgba(0,229,255,0.2);}
 .mgbtn-canc{background:rgba(255,61,90,0.08);color:var(--red);border:1px solid rgba(255,61,90,0.18);}
 
-/* â”€â”€â”€ PRECIOS â”€â”€â”€ */
+/* ─── PRECIOS ─── */
 .pricing-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -605,7 +605,7 @@ body::after{
 }
 .plan-card.featured .plan-btn:hover{opacity:0.88;}
 
-/* â”€â”€â”€ CTA FOOTER â”€â”€â”€ */
+/* ─── CTA FOOTER ─── */
 .cta-footer{
   position:relative; z-index:1;
   padding:120px clamp(16px,4vw,80px);
@@ -636,7 +636,7 @@ body::after{
 .wm a{color:var(--text3);text-decoration:none;}
 .wm a:hover{color:var(--teal);}
 
-/* â”€â”€â”€ DIVIDER â”€â”€â”€ */
+/* ─── DIVIDER ─── */
 .section-divider{
   height:1px; max-width:1200px; margin:0 auto;
   background:linear-gradient(90deg,transparent,rgba(0,196,188,0.15),transparent);
@@ -644,7 +644,7 @@ body::after{
 
 .m-field{display:flex;flex-direction:column;gap:2px;}
 
-/* â”€â”€â”€ FLOATING BARBER TOOLS â”€â”€â”€ */
+/* ─── FLOATING BARBER TOOLS ─── */
 .admin-atm{ position:relative; overflow:hidden; }
 .atm-bg{ position:absolute; inset:0; pointer-events:none; z-index:0; }
 .atm-tool{
@@ -676,7 +676,7 @@ body::after{
   65%{transform:translate(10px,6px) rotate(calc(var(--r,0deg) + 5deg));}
 }
 
-/* â”€â”€â”€ 3D APP SCREENSHOTS CAROUSEL â”€â”€â”€ */
+/* ─── 3D APP SCREENSHOTS CAROUSEL ─── */
 @keyframes phoneFloat{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-10px);}
@@ -802,7 +802,7 @@ body::after{
   background:var(--bg2);
 }
 
-/* Caption â€” overlay gradient inside phone */
+/* Caption — overlay gradient inside phone */
 .c3d-caption{
   position:absolute;bottom:0;left:0;right:0;
   padding:28px 12px 14px;
@@ -912,7 +912,7 @@ body::after{
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <defs>
     <filter id="no-white" color-interpolation-filters="sRGB">
-      <!-- A' = -R -G -B + 3*A â†’ blanco(1,1,1,1)â†’0, negro(0,0,0,1)â†’3(=1), transparente(A=0)â†’â‰¤0 -->
+      <!-- A' = -R -G -B + 3*A → blanco(1,1,1,1)→0, negro(0,0,0,1)→3(=1), transparente(A=0)→≤0 -->
       <feColorMatrix type="matrix"
         values="1  0  0  0  0
                 0  1  0  0  0
@@ -931,19 +931,19 @@ body::after{
     Barber<span>Agenda</span>
   </a>
   <div class="nav-links">
-    <a href="#config">ConfiguraciÃ³n</a>
+    <a href="#config">Configuración</a>
     <a href="#admin">Admin</a>
     <a href="#features">Funciones</a>
     <a href="#precios">Precios</a>
   </div>
-  <a class="nav-cta" href="#precios">EmpezÃ¡ hoy</a>
+  <a class="nav-cta" href="#precios">Empezá hoy</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-eyebrow">Software para barberÃ­as</div>
-  <h1 class="hero-title">Tu barberÃ­a en<br><span>modo profesional</span></h1>
-  <p class="hero-sub">Agenda online Â· Panel admin Â· WhatsApp integrado</p>
+  <div class="hero-eyebrow">Software para barberías</div>
+  <h1 class="hero-title">Tu barbería en<br><span>modo profesional</span></h1>
+  <p class="hero-sub">Agenda online · Panel admin · WhatsApp integrado</p>
   <div class="hero-btns">
     <a href="#features" class="btn-primary">Ver funciones</a>
     <a href="#precios" class="btn-ghost">Ver precios</a>
@@ -984,8 +984,8 @@ body::after{
 <!-- CONFIG -->
 <section class="section fade-up" id="config">
   <div class="sec-eyebrow">Onboarding</div>
-  <h2 class="sec-title">ConfigurÃ¡ todo en minutos</h2>
-  <p class="sec-sub">7 pasos simples para dejar tu barberÃ­a lista y empezar a recibir turnos desde el dÃ­a uno.</p>
+  <h2 class="sec-title">Configurá todo en minutos</h2>
+  <p class="sec-sub">7 pasos simples para dejar tu barbería lista y empezar a recibir turnos desde el día uno.</p>
 
   <div class="steps-grid">
 
@@ -995,8 +995,8 @@ body::after{
         <div class="step-title">Nombre del local</div>
       </div>
       <div class="step-mockup">
-        <div class="m-label">Nombre de tu barberÃ­a</div>
-        <div class="m-input active">BarberÃ­a El ClÃ¡sico</div>
+        <div class="m-label">Nombre de tu barbería</div>
+        <div class="m-input active">Barbería El Clásico</div>
       </div>
     </div>
 
@@ -1006,7 +1006,7 @@ body::after{
         <div class="step-title">Logo y colores</div>
       </div>
       <div class="step-mockup">
-        <div class="m-dropzone">SubÃ­ tu logo</div>
+        <div class="m-dropzone">Subí tu logo</div>
         <div class="m-label" style="margin-top:4px">Color de marca</div>
         <div class="m-swatch-row">
           <div class="m-swatch" style="background:#3498DB"></div>
@@ -1022,21 +1022,21 @@ body::after{
     <div class="step-card fade-up" style="--i:2">
       <div style="display:flex;align-items:center;gap:8px">
         <div class="step-badge">3</div>
-        <div class="step-title">DÃ­as y horarios</div>
+        <div class="step-title">Días y horarios</div>
       </div>
       <div class="step-mockup">
         <div class="m-chip-row">
           <div class="m-day-chip on">Lun</div>
           <div class="m-day-chip on">Mar</div>
-          <div class="m-day-chip on">MiÃ©</div>
+          <div class="m-day-chip on">Mié</div>
           <div class="m-day-chip on">Jue</div>
           <div class="m-day-chip on">Vie</div>
-          <div class="m-day-chip">SÃ¡b</div>
+          <div class="m-day-chip">Sáb</div>
         </div>
         <div class="m-time-row">
           <span>Apertura</span>
           <div class="m-time-inp">09:00</div>
-          <span>â€”</span>
+          <span>—</span>
           <div class="m-time-inp">19:00</div>
         </div>
       </div>
@@ -1051,7 +1051,7 @@ body::after{
         <div class="m-price-row"><span>Corte</span><span class="m-price-val">$500</span></div>
         <div class="m-price-row"><span>Corte + Barba</span><span class="m-price-val">$700</span></div>
         <div class="m-price-row"><span>Mechas</span><span class="m-price-val">$1.500</span></div>
-        <div class="m-price-row"><span>DecoloraciÃ³n</span><span class="m-price-val">$2.000</span></div>
+        <div class="m-price-row"><span>Decoloración</span><span class="m-price-val">$2.000</span></div>
       </div>
     </div>
 
@@ -1093,11 +1093,11 @@ body::after{
       </div>
       <div class="step-mockup">
         <div class="m-toggle-row">
-          <span>Ofrecer cursos de barberÃ­a</span>
+          <span>Ofrecer cursos de barbería</span>
           <div class="m-toggle on"></div>
         </div>
-        <div class="m-input" style="margin-top:4px;font-size:10px">Curso intensivo Â· 8hs Â· $15.000</div>
-        <div style="font-size:9px;color:var(--text3);margin-top:2px">Capacidad mÃ¡xima: 6 alumnos</div>
+        <div class="m-input" style="margin-top:4px;font-size:10px">Curso intensivo · 8hs · $15.000</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">Capacidad máxima: 6 alumnos</div>
       </div>
     </div>
 
@@ -1107,17 +1107,17 @@ body::after{
         <div class="step-title">Servicios especiales</div>
       </div>
       <div class="step-mockup">
-        <div style="font-size:9px;color:var(--text3);margin-bottom:4px">Disponibles los sÃ¡bados</div>
+        <div style="font-size:9px;color:var(--text3);margin-bottom:4px">Disponibles los sábados</div>
         <div class="m-toggle-row">
           <span>Mechas</span>
           <div class="m-toggle on"></div>
         </div>
         <div class="m-toggle-row">
-          <span>DecoloraciÃ³n</span>
+          <span>Decoloración</span>
           <div class="m-toggle"></div>
         </div>
         <div class="m-chip-row" style="margin-top:4px">
-          <div class="m-day-chip on">SÃ¡b</div>
+          <div class="m-day-chip on">Sáb</div>
         </div>
       </div>
     </div>
@@ -1130,76 +1130,76 @@ body::after{
 <!-- ADMIN -->
 <section class="section-full admin-atm fade-up" id="admin">
 
-  <!-- â”€â”€ FLOATING BARBER TOOLS (real product photos) â”€â”€ -->
+  <!-- ── FLOATING BARBER TOOLS (real product photos) ── -->
   <div class="atm-bg">
 
-    <!-- Scissors â€” top left, large -->
+    <!-- Scissors — top left, large -->
     <div class="atm-tool" style="left:1%;top:5%;--r:-22deg;--o:0.55;--af:fatm-a;--ad:18s;--dl:0s">
       <img src="public/tools/scissors.png" width="130" style="filter:drop-shadow(0 0 14px rgba(0,196,188,0.25))"/>
     </div>
 
-    <!-- Clipper â€” top right, large -->
+    <!-- Clipper — top right, large -->
     <div class="atm-tool" style="left:88%;top:3%;--r:10deg;--o:0.6;--af:fatm-b;--ad:20s;--dl:1.2s">
       <img src="public/tools/clipper.png" width="90" style="filter:drop-shadow(0 0 16px rgba(0,196,188,0.3))"/>
     </div>
 
-    <!-- Razor â€” right side mid, large -->
+    <!-- Razor — right side mid, large -->
     <div class="atm-tool" style="left:89%;top:46%;--r:-38deg;--o:0.55;--af:fatm-c;--ad:22s;--dl:0.5s">
       <img src="public/tools/razor.png" width="150" style="filter:drop-shadow(0 0 18px rgba(0,196,188,0.28))"/>
     </div>
 
-    <!-- Trimmer â€” bottom left, large -->
+    <!-- Trimmer — bottom left, large -->
     <div class="atm-tool" style="left:2%;top:68%;--r:12deg;--o:0.55;--af:fatm-d;--ad:19s;--dl:2.5s">
       <img src="public/tools/trimmer.png" width="85" style="filter:drop-shadow(0 0 14px rgba(0,196,188,0.28))"/>
     </div>
 
-    <!-- Shaver â€” bottom right, large -->
+    <!-- Shaver — bottom right, large -->
     <div class="atm-tool" style="left:80%;top:76%;--r:-14deg;--o:0.55;--af:fatm-a;--ad:21s;--dl:3.2s">
       <img src="public/tools/shaver.png" width="100" style="filter:drop-shadow(0 0 14px rgba(0,196,188,0.25))"/>
     </div>
 
-    <!-- Pomade â€” left mid -->
+    <!-- Pomade — left mid -->
     <div class="atm-tool" style="left:0%;top:40%;--r:5deg;--o:0.6;--af:fatm-b;--ad:16s;--dl:1.8s">
       <img src="public/tools/pomade.png" width="80" style="filter:drop-shadow(0 0 14px rgba(0,196,188,0.3))"/>
     </div>
 
-    <!-- Scissors â€” top center, smaller, rotated -->
+    <!-- Scissors — top center, smaller, rotated -->
     <div class="atm-tool" style="left:44%;top:1%;--r:48deg;--o:0.45;--af:fatm-d;--ad:24s;--dl:4s">
       <img src="public/tools/scissors.png" width="85" style="filter:drop-shadow(0 0 10px rgba(0,196,188,0.2))"/>
     </div>
 
-    <!-- Clipper â€” right side upper, smaller -->
+    <!-- Clipper — right side upper, smaller -->
     <div class="atm-tool" style="left:91%;top:22%;--r:-20deg;--o:0.48;--af:fatm-a;--ad:17s;--dl:2s">
       <img src="public/tools/clipper.png" width="62" style="filter:drop-shadow(0 0 10px rgba(0,196,188,0.22))"/>
     </div>
 
-    <!-- Razor â€” bottom center, medium -->
+    <!-- Razor — bottom center, medium -->
     <div class="atm-tool" style="left:52%;top:88%;--r:10deg;--o:0.5;--af:fatm-b;--ad:23s;--dl:5s">
       <img src="public/tools/razor.png" width="110" style="filter:drop-shadow(0 0 12px rgba(0,196,188,0.22))"/>
     </div>
 
-    <!-- Trimmer â€” left upper, small -->
+    <!-- Trimmer — left upper, small -->
     <div class="atm-tool" style="left:3%;top:18%;--r:-8deg;--o:0.45;--af:fatm-c;--ad:20s;--dl:3.5s">
       <img src="public/tools/trimmer.png" width="60" style="filter:drop-shadow(0 0 10px rgba(0,196,188,0.2))"/>
     </div>
 
-    <!-- Shaver â€” top right far, small -->
+    <!-- Shaver — top right far, small -->
     <div class="atm-tool" style="left:72%;top:5%;--r:22deg;--o:0.45;--af:fatm-c;--ad:18s;--dl:1.5s">
       <img src="public/tools/shaver.png" width="68" style="filter:drop-shadow(0 0 10px rgba(0,196,188,0.2))"/>
     </div>
 
-    <!-- Pomade â€” bottom left far, small -->
+    <!-- Pomade — bottom left far, small -->
     <div class="atm-tool" style="left:18%;top:84%;--r:-5deg;--o:0.5;--af:fatm-d;--ad:15s;--dl:4.5s">
       <img src="public/tools/pomade.png" width="60" style="filter:drop-shadow(0 0 10px rgba(0,196,188,0.25))"/>
     </div>
 
   </div><!-- /atm-bg -->
 
-  <!-- â”€â”€ CONTENT â”€â”€ -->
+  <!-- ── CONTENT ── -->
   <div class="section-inner" style="position:relative;z-index:1">
     <div class="sec-eyebrow">Panel administrador</div>
     <h2 class="sec-title">Control total de tu agenda</h2>
-    <p class="sec-sub">GestionÃ¡ turnos, confirmÃ¡ citas y coordinÃ¡ tu equipo desde un panel claro y rÃ¡pido.</p>
+    <p class="sec-sub">Gestioná turnos, confirmá citas y coordiná tu equipo desde un panel claro y rápido.</p>
   </div>
 
   <div class="admin-shell fade-up" style="--i:1;position:relative;z-index:1">
@@ -1209,7 +1209,7 @@ body::after{
       <div class="admin-tab">Horas Fijas</div>
       <div class="admin-tab">Apariencia</div>
       <div class="admin-tab">Cursos</div>
-      <div class="admin-tab">EstadÃ­sticas</div>
+      <div class="admin-tab">Estadísticas</div>
     </div>
     <div class="admin-body">
       <div class="admin-sidebar">
@@ -1224,7 +1224,7 @@ body::after{
         </div>
         <div class="admin-barber-item" style="margin-top:auto">
           <div class="admin-barber-dot" style="background:#9B59B6">E</div>
-          <div class="admin-barber-name">SÃ¡bado</div>
+          <div class="admin-barber-name">Sábado</div>
         </div>
       </div>
       <div class="admin-cal">
@@ -1239,9 +1239,9 @@ body::after{
 
 <!-- CAPTURAS 3D -->
 <section class="capturas-section fade-up" id="capturas">
-  <div class="sec-eyebrow">La app en acciÃ³n</div>
-  <h2 class="sec-title">AsÃ­ se ve por dentro</h2>
-  <p class="sec-sub">El flujo completo â€” desde la configuraciÃ³n hasta que el cliente reserva. Capturas reales de la app.</p>
+  <div class="sec-eyebrow">La app en acción</div>
+  <h2 class="sec-title">Así se ve por dentro</h2>
+  <p class="sec-sub">El flujo completo — desde la configuración hasta que el cliente reserva. Capturas reales de la app.</p>
 
   <div class="cap-tabs">
     <div class="cap-tab active" data-cat="all">Todas</div>
@@ -1257,16 +1257,16 @@ body::after{
   </div>
 
   <div class="c3d-nav">
-    <button class="c3d-btn" id="c3d-prev" aria-label="Anterior">â†</button>
+    <button class="c3d-btn" id="c3d-prev" aria-label="Anterior">←</button>
     <div class="c3d-dots" id="c3d-dots"></div>
     <span class="c3d-counter" id="c3d-counter"></span>
-    <button class="c3d-btn" id="c3d-next" aria-label="Siguiente">â†’</button>
+    <button class="c3d-btn" id="c3d-next" aria-label="Siguiente">→</button>
   </div>
 </section>
 
 <!-- Fullscreen overlay -->
 <div class="c3d-overlay" id="c3d-overlay">
-  <button class="c3d-overlay-close" id="c3d-overlay-close">âœ•</button>
+  <button class="c3d-overlay-close" id="c3d-overlay-close">✕</button>
   <img id="c3d-overlay-img" src="" alt="Captura ampliada"/>
   <div class="c3d-overlay-caption" id="c3d-overlay-caption"></div>
 </div>
@@ -1276,8 +1276,8 @@ body::after{
 <!-- FEATURES -->
 <section class="section" id="features">
   <div class="sec-eyebrow">Funcionalidades</div>
-  <h2 class="sec-title">Todo lo que necesitÃ¡s</h2>
-  <p class="sec-sub">Desde avisos personalizados hasta estadÃ­sticas avanzadas â€” cada plan suma capas de potencia a tu negocio.</p>
+  <h2 class="sec-title">Todo lo que necesitás</h2>
+  <p class="sec-sub">Desde avisos personalizados hasta estadísticas avanzadas — cada plan suma capas de potencia a tu negocio.</p>
 
   <div class="features-grid">
 
@@ -1296,7 +1296,7 @@ body::after{
             <div class="aviso-txt">Cerramos el martes por feriado</div>
           </div>
           <div class="aviso-row" style="border-left-color:var(--green)">
-            <div class="aviso-txt">Abrimos este sÃ¡bado hasta las 15hs</div>
+            <div class="aviso-txt">Abrimos este sábado hasta las 15hs</div>
           </div>
           <div class="aviso-row" style="border-left-color:var(--teal)">
             <div class="aviso-txt">Nuevos precios desde el lunes</div>
@@ -1305,7 +1305,7 @@ body::after{
         <div class="feat-bullets">
           <div class="feat-bullet">Chip visible en la landing del cliente</div>
           <div class="feat-bullet">Colores por tipo (alerta / info / promo)</div>
-          <div class="feat-bullet">ActivÃ¡s y desactivÃ¡s en un toque</div>
+          <div class="feat-bullet">Activás y desactivás en un toque</div>
         </div>
       </div>
     </div>
@@ -1318,11 +1318,11 @@ body::after{
             <div class="sec-label" style="background:var(--cyan)">Horas Fijas</div>
             <div class="feat-title">Clientes con turno fijo</div>
           </div>
-          <div class="plan-badge plan-pro" data-tip="Requiere plan Pro">Pro ðŸ”’</div>
+          <div class="plan-badge plan-pro" data-tip="Requiere plan Pro">Pro 🔒</div>
         </div>
         <div class="feat-mockup">
           <table class="hf-table">
-            <thead><tr><th>Cliente</th><th>DÃ­a</th><th>Hora</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Cliente</th><th>Día</th><th>Hora</th><th>Estado</th></tr></thead>
             <tbody>
               <tr><td>Juan M.</td><td>Lunes</td><td>10:00</td><td><span class="status-chip chip-conf">Conf.</span></td></tr>
               <tr><td>Pedro L.</td><td>Martes</td><td>14:30</td><td><span class="status-chip chip-pend">Pend.</span></td></tr>
@@ -1331,7 +1331,7 @@ body::after{
           </table>
         </div>
         <div class="feat-bullets">
-          <div class="feat-bullet">Turno reservado automÃ¡ticamente cada semana</div>
+          <div class="feat-bullet">Turno reservado automáticamente cada semana</div>
           <div class="feat-bullet">Bot de WhatsApp para confirmar o reprogramar</div>
           <div class="feat-bullet">No ocupa el slot hasta ser confirmado</div>
         </div>
@@ -1366,7 +1366,7 @@ body::after{
         </div>
         <div class="feat-bullets">
           <div class="feat-bullet">Logo y color propios en la landing</div>
-          <div class="feat-bullet">ActivÃ¡ o desactivÃ¡ servicios al instante</div>
+          <div class="feat-bullet">Activá o desactivá servicios al instante</div>
           <div class="feat-bullet">Cambios en tiempo real sin redesplegar</div>
         </div>
       </div>
@@ -1378,20 +1378,20 @@ body::after{
         <div class="feat-header">
           <div>
             <div class="sec-label" style="background:var(--green)">Cursos</div>
-            <div class="feat-title">FormaciÃ³n con agenda propia</div>
+            <div class="feat-title">Formación con agenda propia</div>
           </div>
-          <div class="plan-badge plan-elite" data-tip="Requiere plan Elite">Elite ðŸ”’</div>
+          <div class="plan-badge plan-elite" data-tip="Requiere plan Elite">Elite 🔒</div>
         </div>
         <div class="feat-mockup">
           <div class="curso-card-m">
-            <div class="curso-title-m">Curso Intensivo de BarberÃ­a</div>
+            <div class="curso-title-m">Curso Intensivo de Barbería</div>
             <div class="curso-cap">4 / 6 lugares tomados</div>
             <div class="cap-track"><div class="cap-fill" style="width:67%"></div></div>
           </div>
-          <div style="font-size:9px;color:var(--text3);margin-top:4px">15 Jun Â· 8hs Â· $15.000</div>
+          <div style="font-size:9px;color:var(--text3);margin-top:4px">15 Jun · 8hs · $15.000</div>
         </div>
         <div class="feat-bullets">
-          <div class="feat-bullet">Landing de inscripciÃ³n integrada al app</div>
+          <div class="feat-bullet">Landing de inscripción integrada al app</div>
           <div class="feat-bullet">Control de cupos y lista de espera</div>
           <div class="feat-bullet">Independiente de la agenda de turnos</div>
         </div>
@@ -1403,16 +1403,16 @@ body::after{
       <div class="feat-body">
         <div class="feat-header">
           <div>
-            <div class="sec-label">EstadÃ­sticas</div>
-            <div class="feat-title">MÃ©tricas de tu negocio</div>
+            <div class="sec-label">Estadísticas</div>
+            <div class="feat-title">Métricas de tu negocio</div>
           </div>
-          <div class="plan-badge plan-elite" data-tip="Requiere plan Elite">Elite ðŸ”’</div>
+          <div class="plan-badge plan-elite" data-tip="Requiere plan Elite">Elite 🔒</div>
         </div>
         <div class="feat-mockup">
           <div class="mini-kpis">
             <div class="mini-kpi" style="border-top-color:var(--teal)">
               <div class="mini-kpi-val" style="color:var(--teal)">82%</div>
-              <div class="mini-kpi-lbl">OcupaciÃ³n</div>
+              <div class="mini-kpi-lbl">Ocupación</div>
             </div>
             <div class="mini-kpi" style="border-top-color:var(--green)">
               <div class="mini-kpi-val" style="color:var(--green)">47</div>
@@ -1425,11 +1425,11 @@ body::after{
           </div>
         </div>
         <div class="feat-bullets">
-          <div class="feat-bullet">Ingresos estimados por perÃ­odo y barbero</div>
-          <div class="feat-bullet">OcupaciÃ³n, cancelaciones y tendencias</div>
-          <div class="feat-bullet">Servicios mÃ¡s pedidos y dÃ­as pico</div>
+          <div class="feat-bullet">Ingresos estimados por período y barbero</div>
+          <div class="feat-bullet">Ocupación, cancelaciones y tendencias</div>
+          <div class="feat-bullet">Servicios más pedidos y días pico</div>
         </div>
-        <a href="estadisticas-demo.html" target="_blank" class="feat-link">Ver demo completo â†’</a>
+        <a href="estadisticas-demo.html" target="_blank" class="feat-link">Ver demo completo →</a>
       </div>
     </div>
 
@@ -1441,7 +1441,7 @@ body::after{
             <div class="sec-label" style="background:var(--cyan)">Notificaciones</div>
             <div class="feat-title">Push al instante</div>
           </div>
-          <div class="plan-badge plan-pro" data-tip="Requiere plan Pro">Pro ðŸ”’</div>
+          <div class="plan-badge plan-pro" data-tip="Requiere plan Pro">Pro 🔒</div>
         </div>
         <div class="feat-mockup" style="justify-content:center">
           <div class="notif-popup">
@@ -1450,15 +1450,15 @@ body::after{
             </div>
             <div style="flex:1">
               <div class="notif-title">Turno confirmado</div>
-              <div class="notif-body">Juan M. Â· Lunes 10:00 Â· Corte</div>
+              <div class="notif-body">Juan M. · Lunes 10:00 · Corte</div>
             </div>
             <div class="notif-time">ahora</div>
           </div>
         </div>
         <div class="feat-bullets">
-          <div class="feat-bullet">NotificaciÃ³n al admin cuando entra un turno</div>
+          <div class="feat-bullet">Notificación al admin cuando entra un turno</div>
           <div class="feat-bullet">Recordatorio al cliente 24hs antes</div>
-          <div class="feat-bullet">Sin apps extra â€” funciona desde el browser</div>
+          <div class="feat-bullet">Sin apps extra — funciona desde el browser</div>
         </div>
       </div>
     </div>
@@ -1471,15 +1471,15 @@ body::after{
 <!-- CLIENT FLOW -->
 <section class="section" id="flujo">
   <div class="sec-eyebrow">Experiencia del cliente</div>
-  <h2 class="sec-title">AsÃ­ reserva tu cliente</h2>
-  <p class="sec-sub">Un flujo claro y mobile-first â€” desde elegir barbero hasta gestionar el turno, en menos de un minuto.</p>
+  <h2 class="sec-title">Así reserva tu cliente</h2>
+  <p class="sec-sub">Un flujo claro y mobile-first — desde elegir barbero hasta gestionar el turno, en menos de un minuto.</p>
 
   <div class="flow-scroll">
 
     <div class="flow-step fade-up" style="--i:0">
       <div style="display:flex;align-items:center;gap:6px">
         <div class="flow-step-num">1</div>
-        <div class="flow-step-title">ElegÃ­ barbero</div>
+        <div class="flow-step-title">Elegí barbero</div>
       </div>
       <div class="flow-mockup">
         <div style="text-align:center;margin-bottom:4px">
@@ -1502,12 +1502,12 @@ body::after{
       </div>
     </div>
 
-    <div class="flow-arrow">â†’</div>
+    <div class="flow-arrow">→</div>
 
     <div class="flow-step fade-up" style="--i:1">
       <div style="display:flex;align-items:center;gap:6px">
         <div class="flow-step-num">2</div>
-        <div class="flow-step-title">ElegÃ­ horario</div>
+        <div class="flow-step-title">Elegí horario</div>
       </div>
       <div class="flow-mockup">
         <div style="font-size:9px;color:var(--text3);margin-bottom:4px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Lunes 19 de mayo</div>
@@ -1517,11 +1517,11 @@ body::after{
           <div class="slot">11:00</div>
           <div class="slot">14:00</div>
         </div>
-        <div style="font-size:9px;color:var(--teal);margin-top:6px;font-weight:700">âœ“ Seleccionaste 10:00hs</div>
+        <div style="font-size:9px;color:var(--teal);margin-top:6px;font-weight:700">✓ Seleccionaste 10:00hs</div>
       </div>
     </div>
 
-    <div class="flow-arrow">â†’</div>
+    <div class="flow-arrow">→</div>
 
     <div class="flow-step fade-up" style="--i:2">
       <div style="display:flex;align-items:center;gap:6px">
@@ -1531,10 +1531,10 @@ body::after{
       <div class="flow-mockup">
         <div class="m-field">
           <div class="m-label">Nombre</div>
-          <div class="m-input" style="font-size:10px;padding:5px 7px">Juan MartÃ­nez</div>
+          <div class="m-input" style="font-size:10px;padding:5px 7px">Juan Martínez</div>
         </div>
         <div class="m-field">
-          <div class="m-label">TelÃ©fono</div>
+          <div class="m-label">Teléfono</div>
           <div class="m-input" style="font-size:10px;padding:5px 7px">099 123 456</div>
         </div>
         <div class="m-field">
@@ -1545,7 +1545,7 @@ body::after{
       </div>
     </div>
 
-    <div class="flow-arrow">â†’</div>
+    <div class="flow-arrow">→</div>
 
     <div class="flow-step fade-up" style="--i:3">
       <div style="display:flex;align-items:center;gap:6px">
@@ -1553,23 +1553,23 @@ body::after{
         <div class="flow-step-title">Confirmado</div>
       </div>
       <div class="flow-mockup" style="justify-content:center;align-items:center">
-        <div class="confirm-check">âœ“</div>
+        <div class="confirm-check">✓</div>
         <div class="confirm-txt">Turno agendado</div>
-        <div class="confirm-date" style="margin-top:8px">Lunes Â· 10:00hs<br>Barbero 1 Â· Corte+Barba</div>
+        <div class="confirm-date" style="margin-top:8px">Lunes · 10:00hs<br>Barbero 1 · Corte+Barba</div>
       </div>
     </div>
 
-    <div class="flow-arrow">â†’</div>
+    <div class="flow-arrow">→</div>
 
     <div class="flow-step fade-up" style="--i:4">
       <div style="display:flex;align-items:center;gap:6px">
         <div class="flow-step-num">5</div>
-        <div class="flow-step-title">GestionÃ¡</div>
+        <div class="flow-step-title">Gestioná</div>
       </div>
       <div class="flow-mockup">
         <div class="manage-appt">
           <div class="manage-appt-title">Tu turno</div>
-          <div class="manage-appt-sub">Lunes Â· 10:00hs Â· Corte+Barba</div>
+          <div class="manage-appt-sub">Lunes · 10:00hs · Corte+Barba</div>
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:6px">
             <span class="status-chip chip-conf">Confirmado</span>
             <span style="font-size:9px;color:var(--text3)">Barbero 1</span>
@@ -1591,53 +1591,53 @@ body::after{
 <section class="section" id="precios">
   <div class="sec-eyebrow">Planes</div>
   <h2 class="sec-title">Precios simples y claros</h2>
-  <p class="sec-sub">Sin contratos ni sorpresas. EmpezÃ¡ con lo que necesitÃ¡s, escalÃ¡ cuando quieras.</p>
+  <p class="sec-sub">Sin contratos ni sorpresas. Empezá con lo que necesitás, escalá cuando quieras.</p>
 
   <div class="pricing-grid">
 
     <div class="plan-card fade-up" style="--i:0">
       <div class="plan-name">Starter</div>
       <div class="plan-price">$690<span> UYU</span></div>
-      <div class="plan-period">por mes Â· facturaciÃ³n mensual</div>
+      <div class="plan-period">por mes · facturación mensual</div>
       <div class="plan-divider"></div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Agenda online</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Panel administrador</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Avisos personalizados</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Apariencia (logo + colores)</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Hasta 3 barberos</div>
-      <div class="plan-feature"><span class="cross">â€“</span>Horas Fijas + WhatsApp Bot</div>
-      <div class="plan-feature"><span class="cross">â€“</span>Push Notifications</div>
-      <div class="plan-feature"><span class="cross">â€“</span>Cursos y EstadÃ­sticas</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Agenda online</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Panel administrador</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Avisos personalizados</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Apariencia (logo + colores)</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Hasta 3 barberos</div>
+      <div class="plan-feature"><span class="cross">–</span>Horas Fijas + WhatsApp Bot</div>
+      <div class="plan-feature"><span class="cross">–</span>Push Notifications</div>
+      <div class="plan-feature"><span class="cross">–</span>Cursos y Estadísticas</div>
       <a href="#" class="plan-btn">Empezar con Starter</a>
     </div>
 
     <div class="plan-card featured fade-up" style="--i:1">
-      <div class="popular-badge">MÃ¡s popular</div>
+      <div class="popular-badge">Más popular</div>
       <div class="plan-name">Pro</div>
       <div class="plan-price">$990<span> UYU</span></div>
-      <div class="plan-period">por mes Â· facturaciÃ³n mensual</div>
+      <div class="plan-period">por mes · facturación mensual</div>
       <div class="plan-divider"></div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Todo lo de Starter</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Horas Fijas</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Bot WhatsApp automÃ¡tico</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Push Notifications</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Recordatorios de turno</div>
-      <div class="plan-feature"><span class="cross">â€“</span>Cursos</div>
-      <div class="plan-feature"><span class="cross">â€“</span>EstadÃ­sticas avanzadas</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Todo lo de Starter</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Horas Fijas</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Bot WhatsApp automático</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Push Notifications</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Recordatorios de turno</div>
+      <div class="plan-feature"><span class="cross">–</span>Cursos</div>
+      <div class="plan-feature"><span class="cross">–</span>Estadísticas avanzadas</div>
       <a href="#" class="plan-btn">Empezar con Pro</a>
     </div>
 
     <div class="plan-card fade-up" style="--i:2">
       <div class="plan-name">Elite</div>
       <div class="plan-price">$1.490<span> UYU</span></div>
-      <div class="plan-period">por mes Â· facturaciÃ³n mensual</div>
+      <div class="plan-period">por mes · facturación mensual</div>
       <div class="plan-divider"></div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Todo lo de Pro</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Cursos con inscripciÃ³n online</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>EstadÃ­sticas avanzadas</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>MÃ©tricas por barbero</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>DistribuciÃ³n semanal</div>
-      <div class="plan-feature yes"><span class="tick">âœ“</span>Soporte prioritario</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Todo lo de Pro</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Cursos con inscripción online</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Estadísticas avanzadas</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Métricas por barbero</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Distribución semanal</div>
+      <div class="plan-feature yes"><span class="tick">✓</span>Soporte prioritario</div>
       <a href="#" class="plan-btn">Empezar con Elite</a>
     </div>
 
@@ -1648,17 +1648,17 @@ body::after{
 
 <!-- CTA FOOTER -->
 <section class="cta-footer fade-up">
-  <h2 class="cta-title">EmpezÃ¡ hoy</h2>
-  <p class="cta-sub">Tu barberÃ­a merece una herramienta profesional.<br>ConfiguraciÃ³n en minutos, resultados desde el primer dÃ­a.</p>
+  <h2 class="cta-title">Empezá hoy</h2>
+  <p class="cta-sub">Tu barbería merece una herramienta profesional.<br>Configuración en minutos, resultados desde el primer día.</p>
   <a href="#precios" class="cta-big-btn">Elegir mi plan</a>
 </section>
 
-<div class="wm">Hecho con â™¥ por <a href="#">BarberAgenda</a></div>
+<div class="wm">Hecho con ♥ por <a href="#">BarberAgenda</a></div>
 
 <script>
-// â”€â”€â”€ CALENDAR MOCKUP â”€â”€â”€
+// ─── CALENDAR MOCKUP ───
 (function buildCal(){
-  const days=['Lun','Mar','MiÃ©','Jue','Vie','SÃ¡b'];
+  const days=['Lun','Mar','Mié','Jue','Vie','Sáb'];
   const times=[
     '09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30',
     '14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30',
@@ -1671,13 +1671,13 @@ body::after{
     '11:30-4':{cls:'appt-done',txt:'Luis F.'},
     '14:00-2':{cls:'appt-conf',txt:'Marcos V.'},
     '14:30-1':{cls:'appt-pend',txt:'Diego A.'},
-    '15:00-5':{cls:'appt-canc',txt:'RamÃ³n T.'},
+    '15:00-5':{cls:'appt-canc',txt:'Ramón T.'},
     '16:00-0':{cls:'appt-conf',txt:'Bruno S.'},
     '16:30-3':{cls:'appt-pend',txt:'Mateo G.'},
-    '17:00-2':{cls:'appt-done',txt:'NicolÃ¡s R.'},
-    '18:00-1':{cls:'appt-conf',txt:'TomÃ¡s M.'},
+    '17:00-2':{cls:'appt-done',txt:'Nicolás R.'},
+    '18:00-1':{cls:'appt-conf',txt:'Tomás M.'},
     '18:30-4':{cls:'appt-pend',txt:'Felipe L.'},
-    '09:30-0':{cls:'appt-conf',txt:'AndrÃ©s B.'},
+    '09:30-0':{cls:'appt-conf',txt:'Andrés B.'},
     '12:00-5':{cls:'appt-conf',txt:'Gustavo P.'},
   };
   const g=document.getElementById('cal-grid');
@@ -1706,51 +1706,51 @@ body::after{
   });
 })();
 
-// â”€â”€â”€ 3D CAROUSEL â”€â”€â”€
+// ─── 3D CAROUSEL ───
 (function init3DCarousel(){
   const BASE='capturas/';
   const ALL_SLIDES=[
-    // â”€â”€ Onboarding â”€â”€
-    {img:'IMG_3528.png',caption:'Onboarding â€” Nombre del local',cat:'onboarding'},
-    {img:'IMG_3529.png',caption:'Onboarding â€” Logo y colores',cat:'onboarding'},
-    {img:'IMG_3530.png',caption:'Onboarding â€” Selector de tema',cat:'onboarding'},
-    {img:'IMG_3531.png',caption:'Onboarding â€” Horarios de atenciÃ³n',cat:'onboarding'},
-    {img:'IMG_3532.png',caption:'Onboarding â€” DÃ­as de la semana',cat:'onboarding'},
-    {img:'IMG_3533.png',caption:'Onboarding â€” ConfiguraciÃ³n de precios',cat:'onboarding'},
-    {img:'IMG_3534.png',caption:'Onboarding â€” Precios por servicio',cat:'onboarding'},
-    {img:'IMG_3535.png',caption:'Onboarding â€” Agregar barberos',cat:'onboarding'},
-    {img:'IMG_3536.png',caption:'Onboarding â€” Barbero configurado',cat:'onboarding'},
-    {img:'IMG_3537.png',caption:'Onboarding â€” Cursos y talleres',cat:'onboarding'},
-    {img:'IMG_3538.png',caption:'Onboarding â€” Ãšltimos detalles',cat:'onboarding'},
-    {img:'IMG_3539.png',caption:'Onboarding â€” Â¡BarberÃ­a lista!',cat:'onboarding'},
-    // â”€â”€ Admin â”€â”€
-    {img:'IMG_3553.png',caption:'Admin â€” Inicio de sesiÃ³n',cat:'admin'},
-    {img:'IMG_3540.png',caption:'Admin â€” Agenda del dÃ­a',cat:'admin'},
-    {img:'IMG_3541.png',caption:'Admin â€” Vista de turnos',cat:'admin'},
-    {img:'IMG_3542.png',caption:'Admin â€” Detalle de turno',cat:'admin'},
-    {img:'IMG_3543.png',caption:'Admin â€” GestiÃ³n de barberos',cat:'admin'},
-    {img:'IMG_3544.png',caption:'Admin â€” Avisos para clientes',cat:'admin'},
-    {img:'IMG_3545.png',caption:'Admin â€” Cursos y fechas',cat:'admin'},
-    {img:'IMG_3546.png',caption:'Admin â€” Horas fijas',cat:'admin'},
-    {img:'IMG_3550.png',caption:'Admin â€” EstadÃ­sticas del mes',cat:'admin'},
-    {img:'IMG_3551.png',caption:'Admin â€” Apariencia',cat:'admin'},
-    {img:'IMG_3552.png',caption:'Admin â€” Colores de marca',cat:'admin'},
-    {img:'IMG_3554.png',caption:'Admin â€” Notificaciones push',cat:'admin'},
-    {img:'IMG_3555.png',caption:'Admin â€” Resumen de ingresos',cat:'admin'},
-    {img:'IMG_3556.png',caption:'Admin â€” Turnos por barbero',cat:'admin'},
-    {img:'IMG_3557.png',caption:'Admin â€” Panel completo',cat:'admin'},
-    // â”€â”€ Reserva (vista del cliente) â”€â”€
-    {img:'IMG_3558.png',caption:'Reserva â€” Inicio',cat:'reserva'},
-    {img:'IMG_3572.png',caption:'Reserva â€” Aviso activo',cat:'reserva'},
-    {img:'IMG_3573.png',caption:'Reserva â€” Curso disponible',cat:'reserva'},
-    {img:'IMG_3559.png',caption:'Reserva â€” ElegÃ­ tu barbero',cat:'reserva'},
-    {img:'IMG_3560.png',caption:'Reserva â€” SeleccionÃ¡ el horario',cat:'reserva'},
-    {img:'IMG_3561.png',caption:'Reserva â€” Calendario disponible',cat:'reserva'},
-    {img:'IMG_3562.png',caption:'Reserva â€” IngresÃ¡ tus datos',cat:'reserva'},
-    {img:'IMG_3563.png',caption:'Reserva â€” RevisÃ¡ tu turno',cat:'reserva'},
-    {img:'IMG_3564.png',caption:'Reserva â€” Â¡Turno confirmado!',cat:'reserva'},
-    {img:'IMG_3565.png',caption:'Reserva â€” Reagendar turno',cat:'reserva'},
-    {img:'IMG_3566.png',caption:'Reserva â€” Vista final',cat:'reserva'},
+    // ── Onboarding ──
+    {img:'IMG_3528.png',caption:'Onboarding — Nombre del local',cat:'onboarding'},
+    {img:'IMG_3529.png',caption:'Onboarding — Logo y colores',cat:'onboarding'},
+    {img:'IMG_3530.png',caption:'Onboarding — Selector de tema',cat:'onboarding'},
+    {img:'IMG_3531.png',caption:'Onboarding — Horarios de atención',cat:'onboarding'},
+    {img:'IMG_3532.png',caption:'Onboarding — Días de la semana',cat:'onboarding'},
+    {img:'IMG_3533.png',caption:'Onboarding — Configuración de precios',cat:'onboarding'},
+    {img:'IMG_3534.png',caption:'Onboarding — Precios por servicio',cat:'onboarding'},
+    {img:'IMG_3535.png',caption:'Onboarding — Agregar barberos',cat:'onboarding'},
+    {img:'IMG_3536.png',caption:'Onboarding — Barbero configurado',cat:'onboarding'},
+    {img:'IMG_3537.png',caption:'Onboarding — Cursos y talleres',cat:'onboarding'},
+    {img:'IMG_3538.png',caption:'Onboarding — Últimos detalles',cat:'onboarding'},
+    {img:'IMG_3539.png',caption:'Onboarding — ¡Barbería lista!',cat:'onboarding'},
+    // ── Admin ──
+    {img:'IMG_3553.png',caption:'Admin — Inicio de sesión',cat:'admin'},
+    {img:'IMG_3540.png',caption:'Admin — Agenda del día',cat:'admin'},
+    {img:'IMG_3541.png',caption:'Admin — Vista de turnos',cat:'admin'},
+    {img:'IMG_3542.png',caption:'Admin — Detalle de turno',cat:'admin'},
+    {img:'IMG_3543.png',caption:'Admin — Gestión de barberos',cat:'admin'},
+    {img:'IMG_3544.png',caption:'Admin — Avisos para clientes',cat:'admin'},
+    {img:'IMG_3545.png',caption:'Admin — Cursos y fechas',cat:'admin'},
+    {img:'IMG_3546.png',caption:'Admin — Horas fijas',cat:'admin'},
+    {img:'IMG_3550.png',caption:'Admin — Estadísticas del mes',cat:'admin'},
+    {img:'IMG_3551.png',caption:'Admin — Apariencia',cat:'admin'},
+    {img:'IMG_3552.png',caption:'Admin — Colores de marca',cat:'admin'},
+    {img:'IMG_3554.png',caption:'Admin — Notificaciones push',cat:'admin'},
+    {img:'IMG_3555.png',caption:'Admin — Resumen de ingresos',cat:'admin'},
+    {img:'IMG_3556.png',caption:'Admin — Turnos por barbero',cat:'admin'},
+    {img:'IMG_3557.png',caption:'Admin — Panel completo',cat:'admin'},
+    // ── Reserva (vista del cliente) ──
+    {img:'IMG_3558.png',caption:'Reserva — Inicio',cat:'reserva'},
+    {img:'IMG_3572.png',caption:'Reserva — Aviso activo',cat:'reserva'},
+    {img:'IMG_3573.png',caption:'Reserva — Curso disponible',cat:'reserva'},
+    {img:'IMG_3559.png',caption:'Reserva — Elegí tu barbero',cat:'reserva'},
+    {img:'IMG_3560.png',caption:'Reserva — Seleccioná el horario',cat:'reserva'},
+    {img:'IMG_3561.png',caption:'Reserva — Calendario disponible',cat:'reserva'},
+    {img:'IMG_3562.png',caption:'Reserva — Ingresá tus datos',cat:'reserva'},
+    {img:'IMG_3563.png',caption:'Reserva — Revisá tu turno',cat:'reserva'},
+    {img:'IMG_3564.png',caption:'Reserva — ¡Turno confirmado!',cat:'reserva'},
+    {img:'IMG_3565.png',caption:'Reserva — Reagendar turno',cat:'reserva'},
+    {img:'IMG_3566.png',caption:'Reserva — Vista final',cat:'reserva'},
   ];
 
   const track=document.getElementById('c3d-track');
@@ -1917,13 +1917,13 @@ body::after{
   window.addEventListener('resize',()=>arrange());
 })();
 
-// â”€â”€â”€ SCROLL ANIMATIONS â”€â”€â”€
+// ─── SCROLL ANIMATIONS ───
 const obs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 
-// â”€â”€â”€ LOAD REAL SHOP LOGO (optional override) â”€â”€â”€
+// ─── LOAD REAL SHOP LOGO (optional override) ───
 (async function loadShopLogo(){
   try{
     const res=await fetch(
@@ -1932,7 +1932,7 @@ document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
     );
     const [cfg]=await res.json();
     if(!cfg||!cfg.logo_url) return;
-    // Only override hero phone mockup with real shop logo â€” nav keeps the BA brand logo
+    // Only override hero phone mockup with real shop logo — nav keeps the BA brand logo
     const heroImg=document.getElementById('hero-logo-img');
     if(heroImg) heroImg.src=cfg.logo_url;
     if(cfg.shop_name){
@@ -1944,4 +1944,3 @@ document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
-
